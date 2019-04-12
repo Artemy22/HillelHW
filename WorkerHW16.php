@@ -5,7 +5,7 @@
  */
 
 
-include ('EmployeeInterfaceHW16.php');
+include_once('EmployeeInterfaceHW16.php');
 
 class WorkerHW16 implements EmployeeInterfaceHW16
 {
@@ -15,18 +15,42 @@ class WorkerHW16 implements EmployeeInterfaceHW16
     private $position;
     private $startDate;
 
-    public function __construct($name, $age, $salary)
+    /**
+     * WorkerHW16 constructor.
+     * @param $name
+     * @param $age
+     * @param $salary
+     * @param $position
+     * @param $startDate
+     */
+    public function __construct($name = '', $age = '', $salary = '', $position = '')
     {
         $this->setName($name);
         $this->setSalary($salary);
         $this->setAge($age);
+        $this->position = $position;
     }
 
-    private function checkAge($age) : bool
+    /**
+     * @param mixed $position
+     */
+    public function setPosition($position): void
     {
-        if ($age <= 100 && $age >= 1)
-            return true;
+        $this->position = $position;
     }
+
+
+
+
+    private function checkAge($age): bool
+    {
+        if ($age <= 100 && $age >= 1) {
+            return true;
+        }
+
+        return false;
+    }
+
     /**
      * @param mixed $age
      */
@@ -82,10 +106,11 @@ class WorkerHW16 implements EmployeeInterfaceHW16
         return $this->position;
     }
 
-    public function getStartDate() {
-        return DateTimeInterface::W3C;
+    public function getStartDate($startDate): DateTimeInterface
+    {
+       $res = new DateTimeImmutable($startDate);
+       $res->format('Y-m-d\TH:i:sP');
+       return $res;
     }
 }
 
-$test = new WorkerHW16('Valeriy', 27, 1700);
- print_r ($test);
