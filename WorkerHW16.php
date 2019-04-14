@@ -9,88 +9,33 @@ include_once('EmployeeInterfaceHW16.php');
 
 class WorkerHW16 implements EmployeeInterfaceHW16
 {
-    private $name;
-    private $age;
-    private $salary;
-    private $position;
-    private $startDate;
+
+    public $name;
+    public $salary;
+    public $position;
+    public $startDate;
 
     /**
      * WorkerHW16 constructor.
      * @param $name
-     * @param $age
      * @param $salary
      * @param $position
      * @param $startDate
      */
-    public function __construct($name = '', $age = '', $salary = '', $position = '')
-    {
-        $this->setName($name);
-        $this->setSalary($salary);
-        $this->setAge($age);
-        $this->position = $position;
-    }
-
-    /**
-     * @param mixed $position
-     */
-    public function setPosition($position): void
-    {
-        $this->position = $position;
-    }
-
-
-
-
-    private function checkAge($age): bool
-    {
-        if ($age <= 100 && $age >= 1) {
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
-     * @param mixed $age
-     */
-    public function setAge($age): void
-    {
-        if ($this->checkAge($age) == 1) {
-            $this->age = $age;
-        }
-    }
-
-    /**
-     * @param mixed $name
-     */
-    public function setName($name): void
+    public function __construct($name, $salary, $position, $startDate)
     {
         $this->name = $name;
+        $this->salary = $salary;
+        $this->position = $position;
+        $this->startDate = $startDate;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getName()
+    public function countYears(): int
     {
-        return $this->name;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAge()
-    {
-        return $this->age;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getSalary()
-    {
-        return $this->salary;
+        $date1 = new DateTime('now');
+        $date2 = new DateTime($this->startDate);
+        $different = floor(($date1->diff($date2)->days) / 365);
+        return $different;
     }
 
     /**
@@ -101,16 +46,31 @@ class WorkerHW16 implements EmployeeInterfaceHW16
         $this->salary = $salary;
     }
 
+    public function addBonus(): void
+    {
+        if ($this->countYears()> 1) {
+            $this->salary = $this->salary + ($this->salary * $this->countYears() * 0.05);
+        }
+    }
+
+    public function getName()
+    {
+        $this->name;
+    }
+
+    public function getSalary()
+    {
+        $this->salary;
+    }
+
     public function getPosition()
     {
-        return $this->position;
+        $this->position;
     }
 
-    public function getStartDate($startDate): DateTimeInterface
+    public function getStartDate($startDate): DateTime
     {
-       $res = new DateTimeImmutable($startDate);
-       $res->format('Y-m-d\TH:i:sP');
-       return $res;
+        $date = new DateTime($startDate);
+        return $date;
     }
 }
-

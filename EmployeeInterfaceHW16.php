@@ -8,8 +8,11 @@
 interface EmployeeInterfaceHW16
 {
     public function getName();
+
     public function getSalary();
+
     public function getPosition();
-    public function  getStartDate($startDate);
+
+    public function getStartDate($startDate): DateTime;
 
 }

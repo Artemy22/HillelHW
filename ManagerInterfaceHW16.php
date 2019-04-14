@@ -7,6 +7,8 @@
 interface ManagerInterfaceHW16
 {
     public function getEmployees();
-    public function addEmployee(EmployeeInterfaceHW16 $employee);
+
+    public function addEmployee(WorkerHW16 $employee);
+
     public function getCountEmployees();
 }
