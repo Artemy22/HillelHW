@@ -3,9 +3,9 @@
  * Создать класс Manager, он должен реализовать EmployeInterface и ManagerInterface.
  */
 
-include_once ('EmployeeInterfaceHW16.php');
-include_once ('ManagerInterfaceHW16.php');
-include_once ('WorkerHW16.php');
+include_once('EmployeeInterfaceHW16.php');
+include_once('ManagerInterfaceHW16.php');
+include_once('WorkerHW16.php');
 
 class ManagerHW16 implements EmployeeInterfaceHW16, ManagerInterfaceHW16
 {
@@ -17,40 +17,91 @@ class ManagerHW16 implements EmployeeInterfaceHW16, ManagerInterfaceHW16
 
     public $employies = [];
 
+    /**
+     * ManagerHW16 constructor.
+     * @param $name
+     * @param $salary
+     * @param $startDate
+     */
+    public function __construct($name, $salary, $startDate)
+    {
+        $this->name = $name;
+        $this->salary = $salary;
+        $this->startDate = $startDate;
+    }
+
+    /**
+     * @param mixed $salary
+     */
+    public function setSalary($salary): void
+    {
+        $this->salary = $salary;
+    }
+
+    public function countYears(): int
+    {
+        $date1 = new DateTime('now');
+        $date2 = new DateTime($this->startDate);
+        $different = floor(($date1->diff($date2)->days) / 365);
+        return $different;
+    }
+
+    public function addBonus()
+    {
+        if ($this->countYears() > 1) {
+            $this->salary = $this->salary + ($this->salary * $this->countYears() * 0.05) + ($this->salary * 0.02 * $this->getCountEmployees());
+        }
+    }
+
+    /**
+     * @param mixed $name
+     */
+    public function setName($name): void
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @param mixed $salary
+     */
+
+
     public function getName()
     {
-        $this-> name;
+        $this->name;
     }
 
     public function getSalary()
     {
-        $this -> salary;
+        $this->salary;
     }
 
     public function getPosition()
     {
-        $this -> position;
+        $this->position;
     }
 
-    public function getStartDate($startDate)
+    public function getStartDate($startDate): DateTime
     {
-        $this -> startDate;
+        $date = new DateTime($startDate);
+        return $date;
     }
 
-    public function getEmployees(): array
+    public function getEmployees()
     {
         return $this->employies;
     }
 
-    public function addEmployee(EmployeeInterfaceHW16 $employee)
+    public function addEmployee(WorkerHW16 $employee)
     {
-        $this->employies[] = $employee;
+        $this->employies[] = $employee;;
     }
 
     public function getCountEmployees()
     {
-        return count($this->employee);
+        return count($this->employies);
     }
+
     /**
      * @param mixed $startDate
      */
@@ -59,14 +110,3 @@ class ManagerHW16 implements EmployeeInterfaceHW16, ManagerInterfaceHW16
         $this->startDate = $startDate;
     }
 }
-
-$m = new ManagerHW16();
-$m->addEmployee(new WorkerHW16());
-$m->addEmployee(new WorkerHW16());
-
-var_dump($m->getEmployees());
-die;
-
-$dateForManager1 = new DateTimeImmutable('2010-05-15');
-$Manager1 = new  ManagerHW16('Vasiliy', 25, 1750, 'driver', $dateForManager1->format('Y-m-d\TH:i:sP'));
-
