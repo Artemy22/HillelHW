@@ -35,3 +35,5 @@ $manager2->addBonus();
 $count2 = count($manager2->employies);
 
 echo "<br>Manager name: " . $manager2->name . "<br> Salary: " . $manager2->salary . " <br> Workers count: " . $count2;
+
+echo "new branch";
