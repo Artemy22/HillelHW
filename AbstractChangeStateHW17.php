@@ -14,20 +14,14 @@ abstract class AbstractChangeStateHW17
 
     public function changeState($actualState)
     {
-            $this->actualState = $actualState;
+        $this->actualState = $actualState;
     }
 
-    /**
-     * @return mixed
-     */
     public function getActualWeight()
     {
         return $this->actualWeight;
     }
 
-    /**
-     * @return mixed
-     */
     public function getMaxWeight()
     {
         return $this->maxWeight;
