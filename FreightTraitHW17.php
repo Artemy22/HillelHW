@@ -33,14 +33,14 @@ trait FreightTraitHW17
         } else return "invalid weight";
     }
 
-
+  
     public function getVacantSpace(): int
     {
         return $this->maxWeight - $this->actualWeight;
     }
 
-    public function removeWeight()
-    {
+    public function removeWeight(){
+
         $this->actualWeight = 0;
     }
 

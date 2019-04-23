@@ -47,3 +47,4 @@ $transportTruck->load(8);
 echo "State: " . $transportTruck->getState() . "<br>Actual weight after loading: " . $transportTruck->getActualWeight() . "<br>";
 $transportTruck->removeWeight();
 echo "Action: Remove all. <br>Available space after full unloading: " . $transportTruck->getMaxWeight() . "<br>";
+
