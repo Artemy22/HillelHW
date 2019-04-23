@@ -18,6 +18,7 @@
  *
  * Для таблиц: users, user_roles, address_countries, address_cities, address_streets -создать классы.
  * Сделать табличный вывод пользователей через использование обьектов.
+ *
  */
 class NameReturnHWhw18
 {
