@@ -1,5 +1,6 @@
 <?php
 
+
 trait PublicTraitHW17
 {
     protected $actualPass;
@@ -7,15 +8,18 @@ trait PublicTraitHW17
     protected $vacantSeats;
     protected $actualState;
 
+
     public function getActualPass()
     {
         return $this->actualPass;
     }
 
+
     public function getMaxCount()
     {
         return $this->maxCount;
     }
+
 
     public function setMaxCount($maxCount)
     {
