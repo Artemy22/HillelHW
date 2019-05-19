@@ -25,7 +25,11 @@
                 echo "<option value=$value2>$value2</option>";
             }
         }
+
         echo "</select><br><br><form><button type='submit'>Submit</button></form>";
+
+
+
         ?>
     </p>
 
