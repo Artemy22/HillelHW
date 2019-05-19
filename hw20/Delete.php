@@ -22,6 +22,7 @@ class Delete
     }
 }
 
+
 echo "<form enctype='multipart/form-data' method='POST' >";
 echo "<input type='text' id='inputNewData' name=id placeholder='ID of needed rows'><br>";
 echo "<button type='submit' name='delete'>Submit</button></form>";
