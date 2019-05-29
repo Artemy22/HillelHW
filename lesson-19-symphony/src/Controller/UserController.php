@@ -2,20 +2,16 @@
 
 namespace App\Controller;
 
-use App\Entity\Country;
-use App\Entity\Phone;
 use App\Entity\User;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class CountryController extends AbstractController
+class UserController extends AbstractController
 {
-
     /**
      * @var UserRepository
      */
-
     private $repositoryUser;
 
     public function __construct()
@@ -24,16 +20,18 @@ class CountryController extends AbstractController
     }
 
     /**
-     * @Route("/countries", name="country")
+     * @Route("/user", name="user")
      */
     public function index()
     {
-        $repositoryUser = $this->getDoctrine()->getRepository(Country::class);
+//        $repositoryUser = $this->getDoctrine()->getRepository(User::class);
+        $repositoryUser = $this->getDoctrine()->getRepository(User::class);
 
-        $countries = $repositoryUser->findAll();
+        $users = $repositoryUser->findAll();
 
-        return $this->render('country/index.html.twig', [
-            'countries' => $countries,
+        return $this->render('user/index.html.twig', [
+            'users' => $users,
         ]);
     }
+
 }
